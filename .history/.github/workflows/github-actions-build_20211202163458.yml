@@ -24,9 +24,10 @@ jobs:
       # 命名这个步骤为构建Build
       - name: Build
         run: npm install && npm run build
-      # 命名这个任务为发布Deploy
+
+      # 命名这个任务为发布Deploy,连接SSH, 打包之后部署到指定服务器
       - name: Deploy
-        uses: appleboy/ssh-action@master
+        uses: cross-the-world/scp-pipeline@master
         env:
           WELCOME: "ssh scp ssh pipelines"
           LASTSSH: "Doing something after copying"
