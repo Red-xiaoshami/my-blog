@@ -32,10 +32,20 @@ jobs:
         env:
            WELCOME: "ssh scp ssh pipelines"
            LASTSSH: "Doing something after copying"
-        with:
+         with:
            host: ${{ secrets.TG_HOST }}
            user: ${{ secrets.TG_USER }}
            pass: ${{ secrets.TG_PASS }}
            connect_timeout: 10s
            local: './dist/*'
            remote: /data/s3
+
+      # Uncomment this step to verify the use of 'deno fmt' on each commit.
+      # - name: Verify formatting
+      #   run: deno fmt --check
+
+      # - name: Run linter
+      #   run: deno lint
+
+      # - name: Run tests
+      #   run: deno test -A --unstable
