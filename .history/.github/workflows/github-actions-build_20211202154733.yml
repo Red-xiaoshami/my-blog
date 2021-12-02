@@ -17,6 +17,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Setup repo
         uses: actions/checkout@v2
@@ -25,7 +26,6 @@ jobs:
       - name: Build
         run: npm install && npm run build
 
-      # 命名这个任务为发布Deploy,连接SSH, 打包之后部署到指定服务器
+      # 命名这个任务为发布Deploy,连接SSH，打包之后部署到指定服务器
       - name: Deploy
-        uses: cross-the-world/scp-pipeline@master
-        
+        uses:cross-the-world/scp-pipeline@master
