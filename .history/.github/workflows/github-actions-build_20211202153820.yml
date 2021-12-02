@@ -1,0 +1,41 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+# This workflow will install Deno then run Deno lint and test.
+# For more information see: https://github.com/denoland/setup-deno
+
+name: my-blog
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Setup repo
+        uses: actions/checkout@v2
+
+      # 命名这个步骤为构建Build
+      - name: Build
+        run: npm install && npm run build
+
+      # 命名这个任务为发布Deploy,连接SSH，打包之后部署到指定服务器
+      - name: Deploy
+        uses: iData@master
+        env:
+           WELCOME: "ssh scp ssh pipelines"
+           LASTSSH: "Doing something after copying"
+        with:
+           host: ${{ secrets.TG_HOST }}
+           user: ${{ secrets.TG_USER }}
+           pass: ${{ secrets.TG_PASS }}
+           connect_timeout: 10s
+           local: './dist/*'
+           remote: /data/s3
