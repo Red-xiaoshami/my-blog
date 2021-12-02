@@ -31,11 +31,11 @@ switch (code) {
 // 时间处理 timeFormat 接口返回最后时间；flagTime 相关状态的剩余时间；currentTime 当前系统的时间；checkTime 理应倒计时时间；newCheckTime 统计上次倒计时时间
 let newCheckTime = 0, timeFormat = data.lasttime;
 function initTime() {
-    let currentTime = Date.parse(new Date()) / 1000,
+    let currentTime = Date.parse(new Date())/1000,
         flagTime,
         checkTime,
         result;
-    if (status) {
+    if(status) {
         flagTime = flagTime.lasttime;
     }
     checkTime = flagTime - currentTime;
@@ -43,13 +43,13 @@ function initTime() {
     return result;
 }
 
-if (_this.timer) {
+if(_this.timer) {
     clearInterval(_this.timer)
 }
 
 _this.timer = setInterval(function () {
     let time = timeFormat + initTime();
-    if (time >= 0) {
+    if(time>=0) {
         // 页面显示倒计时
     } else {
         clearInterval(_this.timer);
