@@ -27,8 +27,7 @@ jobs:
 
       # 命名这个任务为发布Deploy,连接SSH, 打包之后部署到指定服务器
       - name: Deploy
-        uses: cross-the-world/scp-pipeline@master
-        env:
+        uses: cross-the-world/scp-pipeline@masterenv:
            WELCOME: "ssh scp ssh pipelines"
            LASTSSH: "Doing something after copying"
         with:
