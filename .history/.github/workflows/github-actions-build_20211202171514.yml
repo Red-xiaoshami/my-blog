@@ -39,5 +39,3 @@ jobs:
           local: './dist/*'
           remote: /data/s3
           script: echo 'Deployment to Azure succesful!'
-
-          
