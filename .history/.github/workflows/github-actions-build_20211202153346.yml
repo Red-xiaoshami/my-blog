@@ -26,7 +26,7 @@ jobs:
       - name: Build
         run: npm install && npm run build
 
-      # 命名这个任务为发布Deploy,连接SSH，打包之后部署到指定服务器
+      # 命名这个任务为发布Deploy,lian jie
       - name: Deploy
          uses: iData@master
          env:

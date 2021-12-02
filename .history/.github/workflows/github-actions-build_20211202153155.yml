@@ -26,8 +26,9 @@ jobs:
       - name: Build
         run: npm install && npm run build
 
-      # 命名这个任务为发布Deploy,连接SSH，打包之后部署到指定服务器
+      # 命名这个任务为发布Deploy
       - name: Deploy
+         # 因为构建之后，需要把代码上传到服务器上，所以需要连接到ssh，并且做一个拷贝操作
          uses: iData@master
          env:
            WELCOME: "ssh scp ssh pipelines"
