@@ -25,9 +25,8 @@ jobs:
       # 命名这个步骤为构建Build
       - name: Build
         run: npm install && npm run build
-
-      # 命名这个任务为发布Deploy
-      - name: Deploy
+    
+      - name: Deploy1
         uses: appleboy/ssh-action@master
         env:
           MYGURL: ${{ github.GURL }}
@@ -39,5 +38,6 @@ jobs:
           local: './dist/*'
           remote: /data/s3
           script: echo 'Deployment to Azure succesful!'
+          
 
           
