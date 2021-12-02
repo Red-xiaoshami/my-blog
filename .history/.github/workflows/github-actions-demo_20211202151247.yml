@@ -30,7 +30,7 @@ jobs:
       # 命名这个任务为发布Deploy
       - name: Deploy
          # 因为构建之后，需要把代码上传到服务器上，所以需要连接到ssh，并且做一个拷贝操作
-         uses: iData@master
+         uses: @master
          env:
            WELCOME: "ssh scp ssh pipelines"
            LASTSSH: "Doing something after copying"
@@ -40,14 +40,14 @@ jobs:
            pass: ${{ secrets.TG_PASS }}
            connect_timeout: 10s
            local: './dist/*'
-           remote: /data/s3
+           remote: /usr/share/nginx/html
 
       # Uncomment this step to verify the use of 'deno fmt' on each commit.
       # - name: Verify formatting
       #   run: deno fmt --check
 
-      # - name: Run linter
-      #   run: deno lint
+      - name: Run linter
+        run: deno lint
 
-      # - name: Run tests
-      #   run: deno test -A --unstable
+      - name: Run tests
+        run: deno test -A --unstable

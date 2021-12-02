@@ -28,26 +28,31 @@ jobs:
         run: npm install && npm run build
 
       # 命名这个任务为发布Deploy
-      - name: Deploy
-         # 因为构建之后，需要把代码上传到服务器上，所以需要连接到ssh，并且做一个拷贝操作
-         uses: iData@master
-         env:
-           WELCOME: "ssh scp ssh pipelines"
-           LASTSSH: "Doing something after copying"
-         with:
-           host: ${{ secrets.TG_HOST }}
-           user: ${{ secrets.TG_USER }}
-           pass: ${{ secrets.TG_PASS }}
-           connect_timeout: 10s
-           local: './dist/*'
-           remote: /data/s3
+    - name: Deploy
+      # 因为构建之后，需要把代码上传到服务器上，所以需要连接到ssh，并且做一个拷贝操作
+      uses: cross-the-world/scp-pipeline@master
+      env:
+        WELCOME: "ssh scp ssh pipelines"
+        LASTSSH: "Doing something after copying"
+      with:
+        host: ${{ secrets.TG_HOST }}
+        user: ${{ secrets.TG_USER }}
+        pass: ${{ secrets.TG_PASS }}
+        connect_timeout: 10s
+        local: './dist/*'
+        remote: /usr/share/nginx/html
+
+作者：T谷子
+链接：https://juejin.cn/post/7003278731171069982
+来源：稀土掘金
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
 
       # Uncomment this step to verify the use of 'deno fmt' on each commit.
       # - name: Verify formatting
       #   run: deno fmt --check
 
-      # - name: Run linter
-      #   run: deno lint
+      - name: Run linter
+        run: deno lint
 
-      # - name: Run tests
-      #   run: deno test -A --unstable
+      - name: Run tests
+        run: deno test -A --unstable
