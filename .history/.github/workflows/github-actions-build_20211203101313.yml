@@ -29,19 +29,17 @@ jobs:
       - name: Deploy
         uses: appleboy/scp-action@master
         env:
-          HOST: ${{ secrets.HC_HOST }}
-          USERNAME: ${{ secrets.TG_USER }}
-          KEY: ${{ secrets.TG_PASS }}
+          MYGURL: ${{ github.GURL }}
         with:
-          # host: ${{ secrets.HC_HOST }}
-          # username: ${{ secrets.TG_USER }}
-          # password: ${{ secrets.TG_PASS }}
-          # timeout: 10s
-          source: './dist/*'
-          target: /data/s3
-          # script: |
-          #   cd /data/s3
-          #   scp -r ./dist/* /data/s3
+          host: ${{ secrets.HC_HOST }}
+          username: ${{ secrets.TG_USER }}
+          password: ${{ secrets.TG_PASS }}
+          timeout: 10s
+          # source: './dist/*'
+          # remote: /data/s3
+          script: |
+            cd /data/s3
+            scp -r ./dist/* /data/s3
           
 
           
