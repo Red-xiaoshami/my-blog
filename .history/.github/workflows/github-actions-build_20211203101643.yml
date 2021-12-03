@@ -29,16 +29,16 @@ jobs:
       - name: Deploy
         uses: cross-the-world/scp-pipeline@master
         env:
-          # HOST: ${{ secrets.HC_HOST }}
-          # USERNAME: ${{ secrets.TG_USER }}
-          # KEY: ${{ secrets.TG_PASS }}
+          HOST: ${{ secrets.HC_HOST }}
+          USERNAME: ${{ secrets.TG_USER }}
+          KEY: ${{ secrets.TG_PASS }}
         with:
-          host: ${{ secrets.HC_HOST }}
-          user: ${{ secrets.TG_USER }}
-          pass: ${{ secrets.TG_PASS }}
-          connect_timeout: 10s
-          local: './dist/*'
-          remote: /data/s3
+          # host: ${{ secrets.HC_HOST }}
+          # username: ${{ secrets.TG_USER }}
+          # password: ${{ secrets.TG_PASS }}
+          # timeout: 10s
+          source: './dist/*'
+          target: /data/s3
           # script: |
           #   cd /data/s3
           #   scp -r ./dist/* /data/s3

@@ -37,8 +37,8 @@ jobs:
           user: ${{ secrets.TG_USER }}
           pass: ${{ secrets.TG_PASS }}
           connect_timeout: 10s
-          local: './dist/*'
-          remote: /data/s3
+          source: './dist/*'
+          target: /data/s3
           # script: |
           #   cd /data/s3
           #   scp -r ./dist/* /data/s3
