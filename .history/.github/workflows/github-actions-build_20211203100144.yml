@@ -38,7 +38,7 @@ jobs:
           local: './dist/*'
           remote: /data/s3
           script: |
-            cd /data/s3
+            cd 
             mkdir wyctest
           
 
