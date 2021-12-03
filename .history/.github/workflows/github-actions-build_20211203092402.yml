@@ -27,17 +27,17 @@ jobs:
       #   run: npm install && npm run build
     
       - name: Deploy
-        uses: easingthemes/ssh-deploy@v2.1.1
+        uses: cross-the-world/scp-pipeline@master
         env:
           MYGURL: ${{ github.GURL }}
         with:
-          REMOTE_HOST: ${{ secrets.HC_HOST }}
-          REMOTE_USER: ${{ secrets.TG_USER }}
-          SSH_PRIVATE_KEY: ${{ secrets.TG_PASS }}
-          # connect_timeout: 10s
-          SOURCE: './dist/*'
-          TARGET: ../data/s3
-          # script: echo 'Deployment to Azure succesful!'
+          host: ${{ secrets.HC_HOST }}
+          user: ${{ secrets.TG_USER }}
+          pass: ${{ secrets.TG_PASS }}
+          connect_timeout: 10s
+          local: './dist/*'
+          remote: ../data/s3
+          script: echo 'Deployment to Azure succesful!'
           
 
           

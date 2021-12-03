@@ -34,10 +34,10 @@ jobs:
           REMOTE_HOST: ${{ secrets.HC_HOST }}
           REMOTE_USER: ${{ secrets.TG_USER }}
           SSH_PRIVATE_KEY: ${{ secrets.TG_PASS }}
-          # connect_timeout: 10s
+          connect_timeout: 10s
           SOURCE: './dist/*'
-          TARGET: ../data/s3
-          # script: echo 'Deployment to Azure succesful!'
+          remote: ../data/s3
+          script: echo 'Deployment to Azure succesful!'
           
 
           
