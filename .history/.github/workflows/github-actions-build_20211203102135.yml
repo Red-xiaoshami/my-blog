@@ -28,6 +28,10 @@ jobs:
     
       - name: Deploy
         uses: cross-the-world/scp-pipeline@master
+        env:
+          # HOST: ${{ secrets.HC_HOST }}
+          # USERNAME: ${{ secrets.TG_USER }}
+          # KEY: ${{ secrets.TG_PASS }}
         with:
           host: ${{ secrets.HC_HOST }}
           user: ${{ secrets.TG_USER }}
