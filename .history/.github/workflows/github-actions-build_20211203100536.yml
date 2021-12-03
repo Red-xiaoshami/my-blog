@@ -35,11 +35,11 @@ jobs:
           username: ${{ secrets.TG_USER }}
           password: ${{ secrets.TG_PASS }}
           timeout: 10s
-          # local: './dist/*'
-          # remote: /data/s3
+          local: './dist/*'
+          remote: /data/s3
           script: |
             cd /data/s3
-            scp -r ./dist/* /data/s3
+            scp 
           
 
           
