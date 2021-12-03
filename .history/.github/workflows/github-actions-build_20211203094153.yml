@@ -37,8 +37,7 @@ jobs:
           timeout: 10s
           local: './dist/*'
           remote: /data/s3
-          script: |
-            mkdir wyctest
+          script: echo 'Deployment to Azure succesful!'
           
 
           

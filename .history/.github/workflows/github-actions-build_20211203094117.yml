@@ -34,11 +34,10 @@ jobs:
           host: ${{ secrets.HC_HOST }}
           username: ${{ secrets.TG_USER }}
           password: ${{ secrets.TG_PASS }}
-          timeout: 10s
+          connect_timeout: 10s
           local: './dist/*'
           remote: /data/s3
-          script: |
-            mkdir wyctest
+          script: echo 'Deployment to Azure succesful!'
           
 
           
